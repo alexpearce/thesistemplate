@@ -1,0 +1,99 @@
+% This document should be printed double-sided on standard A4 paper
+% The default options for memoir are:
+%   letterpaper,10pt,twoside,onecolumn,openright,final
+\documentclass[a4paper,11pt]{memoir}
+
+% Remove the 'draft' option when you're ready to submit
+% It will remove the line numbers, and the "Draft generated on..." line on
+% the title page
+\usepackage[draft]{packages}
+
+\author{Alex Pearce}
+% Use texorpdfstring to stop TeX strings being mangled in PDF viewer toolbars
+\title{%
+  Measurements of prompt charm production at
+  \unexpanded{\texorpdfstring{%
+    $\sqrt{s} = \SI{13}{\TeV}$
+  }{%
+    sqrt(s) = 13 TeV
+  }}
+}
+\date{July 2016}
+
+% Fill in the PDF metadata
+\hypersetup{%
+  pdftitle={\thetitle},
+  pdfauthor={\theauthor},
+  pdfcreator={\theauthor}
+}
+
+\begin{document}
+
+% Title page
+\begin{titlingpage}
+  \begin{center}
+    \textbf{\huge\thetitle}
+
+    \vspace{0.5cm}
+
+    \textbf{\Large\theauthor}
+
+    \vfill
+
+    A thesis submitted to The University of Manchester\\
+    for the degree of Doctor of Philosophy\\
+
+    \vspace{0.8cm}
+
+    Particle Physics Group\\
+    School of Physics and Astronomy\\
+    Faculty of Engineering and Physical Sciences\\
+    \textbf{\thedate}
+
+    \vspace{0.8cm}
+
+    \includegraphics[width=0.4\textwidth]{university_logo}
+
+    \iftoggle{draft}{%
+      \vspace{0.8cm}
+      \texttt{Draft generated on \today}
+    }{}
+  \end{center}
+\end{titlingpage}
+
+\frontmatter
+
+\include{chapters/abstract}
+
+\cleardoublepage
+
+\include{chapters/summary}
+
+\cleardoublepage
+
+\tableofcontents
+
+\mainmatter
+\iftoggle{draft}{\linenumbers}{}
+
+\include{chapters/introduction}
+
+\include{chapters/theory}
+
+\cleardoublepage
+
+\appendix
+
+\appendixpage*
+
+\include{chapters/derivation}
+
+\backmatter
+
+\include{chapters/acronyms}
+
+\bibliographystyle{unsrt}
+\renewcommand{\bibname}{References}
+\bibliography{bibliography}
+
+\end{document}
